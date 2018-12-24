@@ -1,0 +1,224 @@
+
+IMPORTING A FILE
+
+> Titanic<-read.csv(file="C:\\Users\\mjshane9\\Desktop\\DS_Weekends-master\\session_4_mod_1\\train.csv",header=TRUE,sep=",")
+
+View(Titanic)
+
+
+
+Explanatory Data Analysis:
+
+> Titanic<- read.csv(file="C:\\Users\\mjshane9\\Desktop\\train.csv",header=TRUE,sep=",")
+> View(Titanic)
+> names(Titanic)  <<Gives the catagories
+ [1] "PassengerId" "Survived"    "Pclass"      "Name"        "Gender"      "Age"        
+ [7] "SibSp"       "Parch"       "Ticket"      "Fare"        "Cabin"       "Embarked"   
+> str(Titanic) <<Shows the structure of your Data or summarizes your Variables
+
+
+> summary(Titanic)
+  PassengerId       Survived          Pclass                                         Name    
+ Min.   :  1.0   Min.   :0.0000   Min.   :1.000   Abbing, Mr. Anthony                  :  1  
+ 1st Qu.:223.5   1st Qu.:0.0000   1st Qu.:2.000   Abbott, Mr. Rossmore Edward          :  1  
+ Median :446.0   Median :0.0000   Median :3.000   Abbott, Mrs. Stanton (Rosa Hunt)     :  1  
+ Mean   :446.0   Mean   :0.3838   Mean   :2.309   Abelson, Mr. Samuel                  :  1  
+ 3rd Qu.:668.5   3rd Qu.:1.0000   3rd Qu.:3.000   Abelson, Mrs. Samuel (Hannah Wizosky):  1  
+ Max.   :891.0   Max.   :1.0000   Max.   :3.000   Adahl, Mr. Mauritz Nils Martin       :  1  
+                                                  (Other)                              :885  
+    Gender         Age            SibSp           Parch             Ticket         Fare       
+ female:314   Min.   : 0.42   Min.   :0.000   Min.   :0.0000   1601    :  7   Min.   :  0.00  
+ male  :577   1st Qu.:20.12   1st Qu.:0.000   1st Qu.:0.0000   347082  :  7   1st Qu.:  7.91  
+              Median :28.00   Median :0.000   Median :0.0000   CA. 2343:  7   Median : 14.45  
+              Mean   :29.70   Mean   :0.523   Mean   :0.3816   3101295 :  6   Mean   : 32.20  
+              3rd Qu.:38.00   3rd Qu.:1.000   3rd Qu.:0.0000   347088  :  6   3rd Qu.: 31.00  
+              Max.   :80.00   Max.   :8.000   Max.   :6.0000   CA 2144 :  6   Max.   :512.33  
+              NA's   :177                                      (Other) :852                   
+         Cabin     Embarked
+            :687    :  2   
+ B96 B98    :  4   C:168   
+ C23 C25 C27:  4   Q: 77   
+ G6         :  4   S:644   
+ C22 C26    :  3           
+ D          :  3           
+ (Other)    :186           
+> Titanic$Pclass<-factor(Titanic$Pclass)
+> summary(Titanic$Pclass)
+  1   2   3 
+216 184 491 
+> summary(Titanic)
+  PassengerId       Survived      Pclass                                     Name        Gender   
+ Min.   :  1.0   Min.   :0.0000   1:216   Abbing, Mr. Anthony                  :  1   female:314  
+ 1st Qu.:223.5   1st Qu.:0.0000   2:184   Abbott, Mr. Rossmore Edward          :  1   male  :577  
+ Median :446.0   Median :0.0000   3:491   Abbott, Mrs. Stanton (Rosa Hunt)     :  1               
+ Mean   :446.0   Mean   :0.3838           Abelson, Mr. Samuel                  :  1               
+ 3rd Qu.:668.5   3rd Qu.:1.0000           Abelson, Mrs. Samuel (Hannah Wizosky):  1               
+ Max.   :891.0   Max.   :1.0000           Adahl, Mr. Mauritz Nils Martin       :  1               
+                                          (Other)                              :885               
+      Age            SibSp           Parch             Ticket         Fare                Cabin     Embarked
+ Min.   : 0.42   Min.   :0.000   Min.   :0.0000   1601    :  7   Min.   :  0.00              :687    :  2   
+ 1st Qu.:20.12   1st Qu.:0.000   1st Qu.:0.0000   347082  :  7   1st Qu.:  7.91   B96 B98    :  4   C:168   
+ Median :28.00   Median :0.000   Median :0.0000   CA. 2343:  7   Median : 14.45   C23 C25 C27:  4   Q: 77   
+ Mean   :29.70   Mean   :0.523   Mean   :0.3816   3101295 :  6   Mean   : 32.20   G6         :  4   S:644   
+ 3rd Qu.:38.00   3rd Qu.:1.000   3rd Qu.:0.0000   347088  :  6   3rd Qu.: 31.00   C22 C26    :  3           
+ Max.   :80.00   Max.   :8.000   Max.   :6.0000   CA 2144 :  6   Max.   :512.33   D          :  3           
+ NA's   :177                                      (Other) :852                    (Other)    :186           
+> Titanic$Survived<-factor(Titanic$Survived)
+> summary(Titanic)
+  PassengerId    Survived Pclass                                     Name        Gender         Age       
+ Min.   :  1.0   0:549    1:216   Abbing, Mr. Anthony                  :  1   female:314   Min.   : 0.42  
+ 1st Qu.:223.5   1:342    2:184   Abbott, Mr. Rossmore Edward          :  1   male  :577   1st Qu.:20.12  
+ Median :446.0            3:491   Abbott, Mrs. Stanton (Rosa Hunt)     :  1                Median :28.00  
+ Mean   :446.0                    Abelson, Mr. Samuel                  :  1                Mean   :29.70  
+ 3rd Qu.:668.5                    Abelson, Mrs. Samuel (Hannah Wizosky):  1                3rd Qu.:38.00  
+ Max.   :891.0                    Adahl, Mr. Mauritz Nils Martin       :  1                Max.   :80.00  
+                                  (Other)                              :885                NA's   :177    
+     SibSp           Parch             Ticket         Fare                Cabin     Embarked
+ Min.   :0.000   Min.   :0.0000   1601    :  7   Min.   :  0.00              :687    :  2   
+ 1st Qu.:0.000   1st Qu.:0.0000   347082  :  7   1st Qu.:  7.91   B96 B98    :  4   C:168   
+ Median :0.000   Median :0.0000   CA. 2343:  7   Median : 14.45   C23 C25 C27:  4   Q: 77   
+ Mean   :0.523   Mean   :0.3816   3101295 :  6   Mean   : 32.20   G6         :  4   S:644   
+ 3rd Qu.:1.000   3rd Qu.:0.0000   347088  :  6   3rd Qu.: 31.00   C22 C26    :  3           
+ Max.   :8.000   Max.   :6.0000   CA 2144 :  6   Max.   :512.33   D          :  3           
+                                  (Other) :852                    (Other)    :186           
+> Titanic %>% summarise(Survived_count=sum(Survived==1)/n())
+Error in Titanic %>% summarise(Survived_count = sum(Survived == 1)/n()) : 
+  could not find function "%>%"
+> library(magrittr)
+> library(dplyr)
+
+Attaching package: ‘dplyr’
+
+The following objects are masked from ‘package:stats’:
+
+    filter, lag
+
+The following objects are masked from ‘package:base’:
+
+    intersect, setdiff, setequal, union
+
+> Titanic %>% summarise(Survived_count=sum(Survived==1)/n())
+  Survived_count
+1      0.3838384
+> Titanic %>% summarise(Survived_count=sum(Survived==2)/n())
+  Survived_count
+1              0
+> Titanic %>% summarise(Survived_count=sum(Survived==3)/n())
+  Survived_count
+1              0
+> Titanic %>% summarise(pclass_count=sum(Pclass==1)/n())
+  pclass_count
+1    0.2424242
+> Titanic %>% summarise(pclass_count=sum(Pclass==2)/n())
+  pclass_count
+1    0.2065095
+> Titanic %>% summarise(pclass_count=sum(Pclass==3)/n())
+  pclass_count
+1    0.5510662
+> barplot(Titanic$Survived)
+Error in barplot.default(Titanic$Survived) : 
+  'height' must be a vector or a matrix
+> barplot(Titanic$Survived)
+Error in barplot.default(Titanic$Survived) : 
+  'height' must be a vector or a matrix
+> Titanic$Survived
+  [1] 0 1 1 1 0 0 0 0 1 1 1 1 0 0 0 1 0 1 0 1 0 1 1 1 0 1 0 0 1 0 0 1 1 0 0 0 1 0 0 1 0 0 0 1 1 0 0 1 0 0 0 0 1
+ [54] 1 0 1 1 0 1 0 0 1 0 0 0 1 1 0 1 0 0 0 0 0 1 0 0 0 1 1 0 1 1 0 1 1 0 0 1 0 0 0 0 0 0 0 0 1 1 0 0 0 0 0 0 0
+[107] 1 1 0 1 0 0 0 0 0 0 0 0 0 0 0 0 0 1 0 1 0 1 1 0 0 0 0 1 0 0 1 0 0 0 0 1 1 0 0 0 1 0 0 0 0 1 0 0 0 0 1 0 0
+[160] 0 0 1 0 0 0 1 1 0 0 0 0 0 1 0 0 0 0 0 0 0 0 0 0 1 1 0 1 1 0 0 1 0 1 1 1 1 0 0 1 0 0 0 0 0 1 0 0 1 1 1 0 1
+[213] 0 0 0 1 1 0 1 0 1 0 0 0 1 0 1 0 0 0 1 0 0 1 0 0 0 1 0 0 0 1 0 0 0 0 0 1 1 0 0 0 0 0 0 1 1 1 1 1 0 1 0 0 0
+[266] 0 0 1 1 1 0 1 1 0 1 1 0 0 0 1 0 0 0 1 0 0 1 0 1 1 1 1 0 0 0 0 0 0 1 1 1 1 0 1 0 1 1 1 0 1 1 1 0 0 0 1 1 0
+[319] 1 1 0 0 1 1 0 1 0 1 1 1 1 0 0 0 1 0 0 1 1 0 1 1 0 0 0 1 1 1 1 0 0 0 0 0 0 0 1 0 1 1 0 0 0 0 0 0 1 1 1 1 1
+[372] 0 0 0 0 1 1 0 0 0 1 1 0 1 0 0 0 1 0 1 1 1 0 1 1 0 0 0 0 1 1 0 0 0 0 0 0 1 0 0 0 0 1 0 1 0 1 1 0 0 0 0 0 0
+[425] 0 0 1 1 0 1 1 1 1 0 0 1 0 1 0 0 1 0 0 1 1 1 1 1 1 1 0 0 0 1 0 1 0 1 1 0 1 0 0 0 0 0 0 0 0 1 0 0 1 1 0 0 0
+[478] 0 0 1 0 0 0 1 1 0 1 0 0 1 0 0 0 0 0 0 1 0 0 0 0 0 0 0 1 0 1 1 0 1 1 0 1 1 0 0 1 0 1 0 1 0 0 1 0 0 1 0 0 0
+[531] 1 0 0 1 0 1 0 1 0 1 1 0 0 1 0 0 1 1 0 1 1 0 0 1 1 0 1 0 1 1 0 0 0 0 0 0 0 0 0 1 1 1 1 1 0 0 1 1 0 1 1 1 0
+[584] 0 0 1 0 1 0 0 0 1 0 0 0 0 1 0 0 1 1 0 0 0 1 0 0 1 1 1 0 0 1 0 0 1 0 0 1 0 0 1 1 0 0 0 0 1 0 0 1 0 1 0 0 1
+[637] 0 0 0 0 0 1 0 1 1 1 0 1 0 1 0 1 0 1 0 0 0 0 0 0 1 0 0 0 1 0 0 0 0 1 1 0 0 1 0 0 0 1 0 1 0 1 0 0 0 0 0 0 0
+[690] 1 1 1 1 0 0 0 0 1 0 0 1 1 0 0 0 0 1 1 1 1 1 0 1 0 0 0 1 1 0 0 1 0 0 0 1 0 1 1 0 0 1 0 0 0 0 0 0 1 0 0 1 0
+[743] 1 0 1 0 0 1 0 0 1 1 0 0 1 1 0 0 0 1 0 0 1 1 0 1 0 0 0 0 0 0 0 0 1 0 0 1 0 1 1 1 0 0 0 0 1 0 1 0 0 0 0 0 0
+[796] 0 1 1 0 0 0 1 1 1 1 0 0 0 0 1 0 0 0 0 0 0 0 0 0 0 1 1 0 1 0 0 0 1 1 1 1 1 0 0 0 1 0 0 1 1 0 0 1 0 0 0 0 0
+[849] 0 1 0 0 0 1 0 1 1 1 1 0 0 0 1 0 0 1 1 0 0 1 0 1 0 0 1 1 0 0 0 1 1 0 0 0 0 0 0 1 0 1 0
+Levels: 0 1
+> table(Titanic$Survived)
+
+  0   1 
+549 342 
+> Titanic$Survived
+  [1] 0 1 1 1 0 0 0 0 1 1 1 1 0 0 0 1 0 1 0 1 0 1 1 1 0 1 0 0 1 0 0 1 1 0 0 0 1 0 0 1 0 0 0 1 1 0 0 1 0 0 0 0 1
+ [54] 1 0 1 1 0 1 0 0 1 0 0 0 1 1 0 1 0 0 0 0 0 1 0 0 0 1 1 0 1 1 0 1 1 0 0 1 0 0 0 0 0 0 0 0 1 1 0 0 0 0 0 0 0
+[107] 1 1 0 1 0 0 0 0 0 0 0 0 0 0 0 0 0 1 0 1 0 1 1 0 0 0 0 1 0 0 1 0 0 0 0 1 1 0 0 0 1 0 0 0 0 1 0 0 0 0 1 0 0
+[160] 0 0 1 0 0 0 1 1 0 0 0 0 0 1 0 0 0 0 0 0 0 0 0 0 1 1 0 1 1 0 0 1 0 1 1 1 1 0 0 1 0 0 0 0 0 1 0 0 1 1 1 0 1
+[213] 0 0 0 1 1 0 1 0 1 0 0 0 1 0 1 0 0 0 1 0 0 1 0 0 0 1 0 0 0 1 0 0 0 0 0 1 1 0 0 0 0 0 0 1 1 1 1 1 0 1 0 0 0
+[266] 0 0 1 1 1 0 1 1 0 1 1 0 0 0 1 0 0 0 1 0 0 1 0 1 1 1 1 0 0 0 0 0 0 1 1 1 1 0 1 0 1 1 1 0 1 1 1 0 0 0 1 1 0
+[319] 1 1 0 0 1 1 0 1 0 1 1 1 1 0 0 0 1 0 0 1 1 0 1 1 0 0 0 1 1 1 1 0 0 0 0 0 0 0 1 0 1 1 0 0 0 0 0 0 1 1 1 1 1
+[372] 0 0 0 0 1 1 0 0 0 1 1 0 1 0 0 0 1 0 1 1 1 0 1 1 0 0 0 0 1 1 0 0 0 0 0 0 1 0 0 0 0 1 0 1 0 1 1 0 0 0 0 0 0
+[425] 0 0 1 1 0 1 1 1 1 0 0 1 0 1 0 0 1 0 0 1 1 1 1 1 1 1 0 0 0 1 0 1 0 1 1 0 1 0 0 0 0 0 0 0 0 1 0 0 1 1 0 0 0
+[478] 0 0 1 0 0 0 1 1 0 1 0 0 1 0 0 0 0 0 0 1 0 0 0 0 0 0 0 1 0 1 1 0 1 1 0 1 1 0 0 1 0 1 0 1 0 0 1 0 0 1 0 0 0
+[531] 1 0 0 1 0 1 0 1 0 1 1 0 0 1 0 0 1 1 0 1 1 0 0 1 1 0 1 0 1 1 0 0 0 0 0 0 0 0 0 1 1 1 1 1 0 0 1 1 0 1 1 1 0
+[584] 0 0 1 0 1 0 0 0 1 0 0 0 0 1 0 0 1 1 0 0 0 1 0 0 1 1 1 0 0 1 0 0 1 0 0 1 0 0 1 1 0 0 0 0 1 0 0 1 0 1 0 0 1
+[637] 0 0 0 0 0 1 0 1 1 1 0 1 0 1 0 1 0 1 0 0 0 0 0 0 1 0 0 0 1 0 0 0 0 1 1 0 0 1 0 0 0 1 0 1 0 1 0 0 0 0 0 0 0
+[690] 1 1 1 1 0 0 0 0 1 0 0 1 1 0 0 0 0 1 1 1 1 1 0 1 0 0 0 1 1 0 0 1 0 0 0 1 0 1 1 0 0 1 0 0 0 0 0 0 1 0 0 1 0
+[743] 1 0 1 0 0 1 0 0 1 1 0 0 1 1 0 0 0 1 0 0 1 1 0 1 0 0 0 0 0 0 0 0 1 0 0 1 0 1 1 1 0 0 0 0 1 0 1 0 0 0 0 0 0
+[796] 0 1 1 0 0 0 1 1 1 1 0 0 0 0 1 0 0 0 0 0 0 0 0 0 0 1 1 0 1 0 0 0 1 1 1 1 1 0 0 0 1 0 0 1 1 0 0 1 0 0 0 0 0
+[849] 0 1 0 0 0 1 0 1 1 1 1 0 0 0 1 0 0 1 1 0 0 1 0 1 0 0 1 1 0 0 0 1 1 0 0 0 0 0 0 1 0 1 0
+Levels: 0 1
+> barplot(table(Titanic$Survived))
+> barplot(table(Titanic$Survived),xlab="Survived",ylab="count",main="Barplot of survived variable")
+> barplot(table(Titanic$Pclass))
+> barplot(table(Titanic$Pclass),xlab="Pclass",ylab="count",main="Barplot of pclass variable")
+> 
+> 
+> table(Titanic$Pclass,Titanic
++ table(Titanic$Pclass,Titanic$Survived)
+> table(Titanic$Pclass,Titanic
++ table(Titanic$Pclass,Titanic$Survived)
+Error: unexpected symbol in:
+"table(Titanic$Pclass,Titanic
+table"
+> table(Titanic$Pclass,Titanic$Survived)
+   
+      0   1
+  1  80 136
+  2  97  87
+  3 372 119
+> plot(table(Titanic$Pclass,Titanic$Survived))
+> Titanic%>% group_by(Survived)%>% summarize(count=sum(Pclass==1)/n())
+# A tibble: 2 x 2
+  Survived count
+  <fct>    <dbl>
+1 0        0.146
+2 1        0.398
+> Titanic%>% group_by(Survived)%>% summarize(count=sum(Pclass==1)/sum(length(Survived==1))
++ 
++ Titanic%>% group_by(Survived)%>% summarize(count=sum(Pclass==1)/sum(Titanic$Pclass==1))
+Error: unexpected symbol in:
+"
+Titanic"
+> Titanic%>% group_by(Survived)%>% summarize(count=sum(Pclass==1)/sum(Titanic$Pclass==1))
+# A tibble: 2 x 2
+  Survived count
+  <fct>    <dbl>
+1 0        0.370
+2 1        0.630
+> Titanic%>% group_by(Survived)%>% summarize(count=sum(Gender=="female")/sum(Titanic$Gender=="female"))
+# A tibble: 2 x 2
+  Survived count
+  <fct>    <dbl>
+1 0        0.258
+2 1        0.742
+Error: unexpected symbol in:
+"table(Titanic$Pclass,Titanic
+table"
+> table(Titanic$Pclass,Titanic$Survived)
+   
+      0   1
+  1  80 136
+  2  97  87
+  3 372 119
+> plot(table(Titanic$Pclass,Titanic$Survived))  >>Contigency Table
+
+> plot(table(Titanic$Gender,Titanic$Survived))
+
+
+
