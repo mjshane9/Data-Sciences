@@ -1,0 +1,86 @@
+> qnorm(0.98)
+[1] 2.053749
+> qnorm(0.1)
+[1] -1.281552
+> qnorm(0.99)
+[1] 2.326348
+> qnorm(0.1)
+[1] -1.281552
+> qnorm(0.01)
+[1] -2.326348
+> #this is for the right side of the z score qnorm(0.99)
+> # this is for the left side qnorm(0.01)
+> data(mtcars)
+> data("mtcars")
+> View(mtcars)
+> MeanofMT<- mean(mtcars$mpg)
+> sd(mtcars$mpg)
+[1] 6.026948
+> nrow
+function (x) 
+dim(x)[1L]
+<bytecode: 0x000000000c0b6dd8>
+<environment: namespace:base>
+> nrow(mtcars)
+[1] 32
+> qnorm(0.975)
+[1] 1.959964
+> sdofmt<-sd(mtcars$mpg)
+> zscore<-qnorm(0.975)
+> zscoreleft<-qnorm(0.025)
+> MeanofMT+zscore*sdofmt/sqrt(nrow(ntcars))
+Error in nrow(ntcars) : object 'ntcars' not found
+> MeanofMT+zscore*sdofmt/sqrt(nrow(mtcars))
+[1] 22.17882
+> MeanofMT+zscoreleft*sdofmt/sqrt(nrow(mtcars))
+[1] 18.00243
+
+> MeanofMT+zscore*sdofmt/sqrt(nrow(ntcars))
+Error in nrow(ntcars) : object 'ntcars' not found
+> MeanofMT+zscore*sdofmt/sqrt(nrow(mtcars))
+[1] 22.17882
+> MeanofMT+zscoreleft*sdofmt/sqrt(nrow(mtcars))
+[1] 18.00243
+> MeanofMT+c(-1,1)*zscoreleft*sdofmt/sqrt(nrow(mtcars))
+[1] 22.17882 18.00243
+
+c(-1,1)>> this can take out both the left and right confidence value when we multiply it with Z score
+
+THis denotes that we are 95 percent confident that the Sample data will lie between 22.17 and 18.002
+
+
+   
+   
+ 
+ 
+
+> data(father.son)
+> View(father.son)
+> mean(father.son$sheight)
+[1] 68.68407
+> meanheight<-mean(father.son$sheight)
+> meanheight+c(-1,1)*qnorm(0.95)*sd(father.son$sheight)/sqrt(nrow(father.son))
+[1] 68.54306 68.82508
+
+
+Wht does 95% confidence mean?
+
+Meaning 95 percent of the intervals are the true Population.
+
+HYPOTHESIS TESTING:
+
+Null Hypothesis Known valu`	e.
+Alternative Hypothesis. Either more then the Null hypo val or less.
+
+30+qnorm(0.95)*10/10
+
+Zscore= Observation-mean/standard deviation.
+
+32-30
+
+
+> mean(mtcars$mpg)-qnorm(0.95)*sd(mtcars$mpg)/sqrt(nrow(mtcars))
+[1] 18.33816
+OR 
+> mean(mtcars$mpg)+qnorm(0.05)*sd(mtcars$mpg)/sqrt(nrow(mtcars))
+[1] 18.33816
